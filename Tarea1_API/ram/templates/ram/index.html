@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Episode List</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+</head>
+<body style="background-color:cream;">
+    <h1> Rick and Morty Episodes </h1>
+    <!--<h2> <a href="{{ x }}"> {{ x }}</a></h2>-->
+    <p>
+    Here is a list of the episodes of Rick and Morty
+    </p>
+        <table>
+          <tr>
+            <th>Name of the Episode</th>
+            <th>Air Date</th>
+            <th>Code of the episode</th>
+          </tr>
+            {% for episode in results %}
+            <tr>
+            <td> <a href="episode/{{ episode.id }}"> {{ episode.name }} </a></td>
+            <td>{{ episode.air_date }}</td>
+            <td>{{ episode.episode }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+
+
+</body>
+</html>

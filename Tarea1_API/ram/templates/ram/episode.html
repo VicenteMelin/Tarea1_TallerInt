@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Episode</title>
+        <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <h1> Episode Detail</h1>
+    <h2>Name: {{ep_info.name}}  </h2>
+    <h2>Air Date: {{ep_info.air_date}}  </h2>
+    <h2>Code: {{ep_info.episode}}  </h2>
+
+        <table>
+          <tr>
+            <th>Character Name</th>
+          </tr>
+            {% for c in char_info %}
+            <tr>
+            <td>  <a href="../../character/{{ c.id }}"> {{ c.name }}</a> </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+
+</body>
+</html>
