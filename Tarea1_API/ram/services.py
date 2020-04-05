@@ -73,3 +73,4 @@ def get_location_info(location_id):
             residents=loc.get('residents')
         )
         return loc_info
+    return ""

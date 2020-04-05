@@ -1,0 +1,1 @@
+web: gunicorn Tarea1_API.wsgi

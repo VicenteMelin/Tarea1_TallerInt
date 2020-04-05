@@ -62,3 +62,12 @@ def character(request, character_id):
     }
     return HttpResponse(template.render(context, request))
 
+
+def not_found(request):
+    template = loader.get_template('ram/not_found.html')
+    context = {
+    }
+    return HttpResponse(template.render(context, request))
+
+
+
