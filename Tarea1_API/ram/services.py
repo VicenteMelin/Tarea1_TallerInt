@@ -74,3 +74,59 @@ def get_location_info(location_id):
         )
         return loc_info
     return ""
+
+
+def get_char_name(query):
+    chars = []
+    char_req = generate_request('https://rickandmortyapi.com/api/character/?name={}'.format(query))
+    if char_req is None:
+        return ''
+    pages_1 = char_req.get('info')
+    if pages_1 is None:
+        return ''
+    pages = pages_1.get('pages')
+    for x in range(pages):
+        for char in char_req.get('results'):
+            chars.append(Character(id=char.get('id'), name=char.get('name')))
+        if x < (pages - 1):
+            url = char_req.get('info').get('next')
+            char_req = generate_request(url)
+    return chars
+
+
+def get_ep_name(query):
+    eps = []
+    ep_req = generate_request('https://rickandmortyapi.com/api/episode/?name={}'.format(query))
+    if ep_req is None:
+        return ''
+    pages_1 = ep_req.get('info')
+    if pages_1 is None:
+        return ''
+    pages = pages_1.get('pages')
+    for x in range(pages):
+        for ep in ep_req.get('results'):
+            eps.append(Episode(id=ep.get('id'), name=ep.get('name')))
+        if x < (pages - 1):
+            url = ep_req.get('info').get('next')
+            ep_req = generate_request(url)
+    return eps
+
+
+def get_loc_name(query):
+    locs = []
+    loc_req = generate_request('https://rickandmortyapi.com/api/location/?name={}'.format(query))
+    if loc_req is None:
+        return ''
+    pages_1 = loc_req.get('info')
+    if pages_1 is None:
+        return ''
+    pages = pages_1.get('pages')
+    for x in range(pages):
+        for loc in loc_req.get('results'):
+            locs.append(Character(id=loc.get('id'), name=loc.get('name')))
+        if x < (pages - 1):
+            url = loc_req.get('info').get('next')
+            loc_req = generate_request(url)
+    return locs
+
+

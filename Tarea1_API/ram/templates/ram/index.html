@@ -22,8 +22,13 @@
     </style>
 </head>
 <body style="background-color:cream;">
+
+    <form action="{% url 'search' %}" method="GET" value="{{request.GET.q}}">
+    Search <input type="text" name="q" value="{{request.GET.q}}" placeholder=""/>
+    <input type="submit" name="submit" value="Search"/>
+    </form>
+
     <h1> Rick and Morty Episodes </h1>
-    <!--<h2> <a href="{{ x }}"> {{ x }}</a></h2>-->
     <p>
     Here is a list of the episodes of Rick and Morty
     </p>

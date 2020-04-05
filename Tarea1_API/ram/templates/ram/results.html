@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+
+        <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Results for <b>"{{ request.GET.q }}"</b></h1>
+
+<h2> Episodes</h2>
+ <table>
+          <tr>
+            <th>Name of the Episode</th>
+          </tr>
+            {% for episode in episodes %}
+            <tr>
+            <td> <a href="../episode/{{ episode.id }}"> {{ episode.name }} </a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+<h2> Characters</h2>
+ <table>
+          <tr>
+            <th>Name of the Episode</th>
+          </tr>
+            {% for character in characters %}
+            <tr>
+            <td> <a href="../character/{{ character.id }}"> {{ character.name }} </a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+<h2> Locations </h2>
+ <table>
+          <tr>
+            <th>Name of the Episode</th>
+          </tr>
+            {% for location in locations %}
+            <tr>
+            <td> <a href="../location/{{ location.id }}"> {{ location.name }} </a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+
+</body>
+</html>

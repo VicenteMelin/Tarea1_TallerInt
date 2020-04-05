@@ -22,6 +22,13 @@
     </style>
 </head>
 <body>
+
+    <form action="{% url 'search' %}" method="GET" value="{{request.GET.q}}">
+    Search <input type="text" name="q" value="{{request.GET.q}}" placeholder=""/>
+    <input type="submit" name="submit" value="Search"/>
+    </form>
+
+
    <h1>{{char_info.name}}</h1>
     <img src= {{char_info.image}}>
     <h2> Status: {{char_info.status}}</h2>

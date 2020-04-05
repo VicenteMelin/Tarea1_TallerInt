@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render
-from .services import get_episodes, get_episode_info, get_character_info, get_location_info
+from .services import get_episodes, get_episode_info, get_character_info, get_location_info, \
+    get_ep_name, get_char_name, get_loc_name
 
 
 def index(request):
@@ -66,6 +67,26 @@ def character(request, character_id):
 def not_found(request):
     template = loader.get_template('ram/not_found.html')
     context = {
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def search(request):
+    template = loader.get_template('ram/results.html')
+    query = request.GET.get('q')
+
+    episodes = get_ep_name(query)
+    characters = get_char_name(query)
+    locations = get_loc_name(query)
+
+    submitbutton = request.GET.get('submit')
+
+    context = {
+        'results': query,
+        'submitbutton': submitbutton,
+        'episodes': episodes,
+        'characters': characters,
+        'locations': locations,
     }
     return HttpResponse(template.render(context, request))
 
