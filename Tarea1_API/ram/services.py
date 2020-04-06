@@ -10,7 +10,7 @@ def generate_request(url, params={}):
 
 
 def get_episodes():
-    response1 = generate_request('https://rickandmortyapi.com/api/episode/')
+    response1 = generate_request('https://integracion-rick-morty-api.herokuapp.com/api/episode/')
     if response1:
         results_p1 = response1.get('results')
         page_2 = response1.get('info').get('next')
@@ -26,7 +26,7 @@ def get_episodes():
 
 
 def get_episode_info(episode_id):
-    ep = generate_request('https://rickandmortyapi.com/api/episode/{}'.format(episode_id))
+    ep = generate_request('https://integracion-rick-morty-api.herokuapp.com/api/episode/{}'.format(episode_id))
     if ep:
         ep_info = Episode(
             id=ep.get('id'),
@@ -39,7 +39,7 @@ def get_episode_info(episode_id):
 
 
 def get_character_info(character_id):
-    cha = generate_request('https://rickandmortyapi.com/api/character/{}'.format(character_id))
+    cha = generate_request('https://integracion-rick-morty-api.herokuapp.com/api/character/{}'.format(character_id))
     aux = []
     if cha:
         char_info = Character(
@@ -63,7 +63,7 @@ def get_character_info(character_id):
 
 
 def get_location_info(location_id):
-    loc = generate_request('https://rickandmortyapi.com/api/location/{}'.format(location_id))
+    loc = generate_request('https://integracion-rick-morty-api.herokuapp.com/api/location/{}'.format(location_id))
     if loc:
         loc_info = Location(
             id=loc.get('id'),
@@ -78,7 +78,7 @@ def get_location_info(location_id):
 
 def get_char_name(query):
     chars = []
-    char_req = generate_request('https://rickandmortyapi.com/api/character/?name={}'.format(query))
+    char_req = generate_request('https://integracion-rick-morty-api.herokuapp.com/api/character/?name={}'.format(query))
     if char_req is None:
         return ''
     pages_1 = char_req.get('info')
@@ -96,7 +96,7 @@ def get_char_name(query):
 
 def get_ep_name(query):
     eps = []
-    ep_req = generate_request('https://rickandmortyapi.com/api/episode/?name={}'.format(query))
+    ep_req = generate_request('https://integracion-rick-morty-api.herokuapp.com/api/episode/?name={}'.format(query))
     if ep_req is None:
         return ''
     pages_1 = ep_req.get('info')
@@ -114,7 +114,7 @@ def get_ep_name(query):
 
 def get_loc_name(query):
     locs = []
-    loc_req = generate_request('https://rickandmortyapi.com/api/location/?name={}'.format(query))
+    loc_req = generate_request('https://integracion-rick-morty-api.herokuapp.com/api/location/?name={}'.format(query))
     if loc_req is None:
         return ''
     pages_1 = loc_req.get('info')
